@@ -1,6 +1,6 @@
 import React from "react";
 import Brand from "../components/Brand";
-import Navigations from "../components/Navigations";
+import Navigation from "../components/Navigation";
 import Register from "../components/Register";
 import SearchBar from "../components/SearchBar";
 
@@ -10,7 +10,7 @@ const NavBar = () => {
       <div className="container flex justify-between items-center">
         <Brand />
         <SearchBar />
-        <Navigations />
+        <Navigation />
         <Register />
       </div>
     </div>
