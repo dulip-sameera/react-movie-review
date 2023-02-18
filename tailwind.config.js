@@ -2,6 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    container: {
+      center: true,
+    },
+    screens: {
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+    },
     extend: {
       colors: {
         orange: "#F94A29",
