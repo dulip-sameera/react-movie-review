@@ -34,19 +34,19 @@ const Movie = () => {
     <div className="container p-10 bg-lightGray min-h-screen">
       {nowPlayingMovies.loading && <div>Loading...</div>}
       {nowPlayingMovies.data && (
-        <Section title={"NOW PLAYING MOVIES"} data={nowPlayingMovieList} />
+        <Section title={"NOW PLAYING"} data={nowPlayingMovieList} />
       )}
       {upComingMovies.loading && <div>Loading...</div>}
       {upComingMovies.data && (
-        <Section title={"UP COMING MOVIES"} data={upComingMovieList} />
+        <Section title={"UP COMING"} data={upComingMovieList} />
       )}
       {topRatedMovies.loading && <div>Loading...</div>}
       {topRatedMovies.data && (
-        <Section title={"TOP RATED MOVIES"} data={topRatedMovieList} />
+        <Section title={"TOP RATED"} data={topRatedMovieList} />
       )}
       {popularMovies.loading && <div>Loading...</div>}
       {popularMovies.data && (
-        <Section title={"POPULAR MOVIES"} data={popularMovieList} />
+        <Section title={"POPULAR"} data={popularMovieList} />
       )}
     </div>
   );
