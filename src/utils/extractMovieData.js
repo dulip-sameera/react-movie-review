@@ -10,6 +10,8 @@ export function extractMovieData(response, posterBaseURL) {
     poster: `${posterBaseURL}${item.poster_path}`,
     title: item.title,
     vote: item.vote_average,
+    type: "movies",
+    overview: item.overview,
   }));
 
   return data;

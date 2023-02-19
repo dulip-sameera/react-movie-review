@@ -10,6 +10,8 @@ export function extractTVData(response, posterBaseURL) {
     poster: `${posterBaseURL}${item.poster_path}`,
     title: item.name,
     vote: item.vote_average,
+    type: "tvseries",
+    overview: item.overview,
   }));
 
   return data;
