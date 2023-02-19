@@ -1,11 +1,12 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
-  const { id, poster, title, vote } = data;
+  const { id, poster, title, vote, type } = data;
 
   return (
-    <div className="mb-4 hover:cursor-pointer" id={id}>
+    <Link to={`/${type}/${id}`} className="mb-4 hover:cursor-pointer" id={id}>
       <div className="relative card-img">
         <div className="bg-black absolute w-full h-full rounded-xl opacity-0 hover:opacity-20 duration-300"></div>
         <img src={poster} alt={`${title}`} className="rounded-xl card-img" />
@@ -17,7 +18,7 @@ const Card = ({ data }) => {
         </div>
         <div className="font-medium">{title}</div>
       </div>
-    </div>
+    </Link>
   );
 };
 
