@@ -1,4 +1,4 @@
-export function extractTVData(response, posterBaseURL) {
+export function extractTVListData(response, posterBaseURL) {
   if (response.error) console.log(response.error);
 
   let dataList = [];
@@ -11,7 +11,6 @@ export function extractTVData(response, posterBaseURL) {
     title: item.name,
     vote: item.vote_average,
     type: "tvseries",
-    overview: item.overview,
   }));
 
   return data;
