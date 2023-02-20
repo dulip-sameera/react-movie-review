@@ -2,7 +2,7 @@ import React from "react";
 import Section from "../components/Section";
 import { useFetch } from "../hook/useFetch";
 import { posterBaseURL } from "../utils/Data";
-import { extractMovieData } from "../utils/extractMovieData";
+import { extractMovieListData } from "../utils/extractMovieListData";
 import {
   nowPlayingMoviesURL,
   popularMoviesURL,
@@ -13,22 +13,25 @@ import {
 const Movie = () => {
   //   Fetch popular movies
   const popularMovies = useFetch(popularMoviesURL);
-  const popularMovieList = extractMovieData(popularMovies, posterBaseURL);
+  const popularMovieList = extractMovieListData(popularMovies, posterBaseURL);
   //   ---------------------------------
 
   //   Fetch Top Rated Movies
   const topRatedMovies = useFetch(topRatedMoviesURL);
-  const topRatedMovieList = extractMovieData(topRatedMovies, posterBaseURL);
+  const topRatedMovieList = extractMovieListData(topRatedMovies, posterBaseURL);
   //   ---------------------------------
 
   //   Fetch Now Playing Movies
   const nowPlayingMovies = useFetch(nowPlayingMoviesURL);
-  const nowPlayingMovieList = extractMovieData(nowPlayingMovies, posterBaseURL);
+  const nowPlayingMovieList = extractMovieListData(
+    nowPlayingMovies,
+    posterBaseURL
+  );
   //   ---------------------------------
 
   //   Fetch Up Coming Movies
   const upComingMovies = useFetch(upComingMoviesURL);
-  const upComingMovieList = extractMovieData(upComingMovies, posterBaseURL);
+  const upComingMovieList = extractMovieListData(upComingMovies, posterBaseURL);
 
   return (
     <div className="container p-10 bg-lightGray min-h-screen">

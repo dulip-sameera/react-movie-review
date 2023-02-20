@@ -1,18 +1,18 @@
 import Section from "../components/Section";
 import { useFetch } from "../hook/useFetch";
 import { posterBaseURL } from "../utils/Data";
-import { extractMovieData } from "../utils/extractMovieData";
-import { extractTVData } from "../utils/extractTVData";
+import { extractMovieListData } from "../utils/extractMovieListData";
+import { extractTVListData } from "../utils/extractTVListData";
 import { popularMoviesURL, popularTVSeriesURL } from "../utils/URL";
 
 const Home = () => {
   //   Fetch popular movies
   const popularMovies = useFetch(popularMoviesURL);
-  const popularMovieList = extractMovieData(popularMovies, posterBaseURL);
+  const popularMovieList = extractMovieListData(popularMovies, posterBaseURL);
 
   // Fetch Popular TV Series
   const popularTVSeries = useFetch(popularTVSeriesURL);
-  const popularTVSeriesList = extractTVData(popularTVSeries, posterBaseURL);
+  const popularTVSeriesList = extractTVListData(popularTVSeries, posterBaseURL);
 
   return (
     <div className="container p-10 bg-lightGray min-h-screen">

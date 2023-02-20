@@ -2,7 +2,7 @@ import React from "react";
 import Section from "../components/Section";
 import { useFetch } from "../hook/useFetch";
 import { posterBaseURL } from "../utils/Data";
-import { extractTVData } from "../utils/extractTVData";
+import { extractTVListData } from "../utils/extractTVListData";
 import {
   airingTodayTVSeriesURL,
   onTheAirTVSeriesURL,
@@ -13,21 +13,27 @@ import {
 const TVSeries = () => {
   // Fetch Popular TV Series
   const popularTVSeries = useFetch(popularTVSeriesURL);
-  const popularTVSeriesList = extractTVData(popularTVSeries, posterBaseURL);
+  const popularTVSeriesList = extractTVListData(popularTVSeries, posterBaseURL);
 
   // Fetch Top Rated TV Series
   const topRatedTVSeries = useFetch(topRatedTVSeriesURL);
-  const topRatedTVSeriesList = extractTVData(topRatedTVSeries, posterBaseURL);
+  const topRatedTVSeriesList = extractTVListData(
+    topRatedTVSeries,
+    posterBaseURL
+  );
 
   // Fetch Air On Today TV Series
   const airingTodayTVSeries = useFetch(airingTodayTVSeriesURL);
-  const airingTodayTVSeriesList = extractTVData(
+  const airingTodayTVSeriesList = extractTVListData(
     airingTodayTVSeries,
     posterBaseURL
   );
   // Fetch On The Air TV Series
   const onTheAirTVSeries = useFetch(onTheAirTVSeriesURL);
-  const onTheAirTVSeriesList = extractTVData(onTheAirTVSeries, posterBaseURL);
+  const onTheAirTVSeriesList = extractTVListData(
+    onTheAirTVSeries,
+    posterBaseURL
+  );
 
   return (
     <div className="container p-10 bg-lightGray min-h-screen">
