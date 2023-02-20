@@ -13,6 +13,16 @@ export default function extractMovieData(
     trailer: "",
   };
 
+  if (response.data) {
+    data = {
+      id: response.data.id,
+      overview: response.data.overview,
+      poster: `${posterBaseURL}${response.data.poster_path}`,
+      title: response.data.title,
+      vote: response.data.vote_average,
+    };
+  }
+
   if (
     response.data &&
     ("results" in response.data.videos) &
@@ -20,16 +30,17 @@ export default function extractMovieData(
   ) {
     for (const item of response.data.videos.results) {
       if (item.type === "Trailer") {
-        data = {
-          id: response.data.id,
-          overview: response.data.overview,
-          poster: `${posterBaseURL}${response.data.poster_path}`,
-          title: response.data.title,
-          vote: response.data.vote_average,
-          trailer: `${youtubeBaseURL}${item.key}`,
-        };
+        data.trailer = `${youtubeBaseURL}${item.key}`;
         break;
       }
+    }
+
+    if (
+      response.data &&
+      (response.data.videos.results !== undefined) &
+        (response.data.videos.results.length === 0)
+    ) {
+      data.trailer = null;
     }
   }
 
