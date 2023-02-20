@@ -11,6 +11,7 @@ export default function extractMovieData(
     title: "",
     vote: "",
     trailer: "",
+    type: "",
   };
 
   if (response.data) {
@@ -20,6 +21,7 @@ export default function extractMovieData(
       poster: `${posterBaseURL}${response.data.poster_path}`,
       title: response.data.title,
       vote: response.data.vote_average,
+      type: "movie",
     };
   }
 
@@ -34,14 +36,14 @@ export default function extractMovieData(
         break;
       }
     }
+  }
 
-    if (
-      response.data &&
-      (response.data.videos.results !== undefined) &
-        (response.data.videos.results.length === 0)
-    ) {
-      data.trailer = null;
-    }
+  if (
+    response.data &&
+    (response.data.videos.results !== undefined) &
+      (response.data.videos.results.length === 0)
+  ) {
+    data.trailer = null;
   }
 
   //   console.log(data);
