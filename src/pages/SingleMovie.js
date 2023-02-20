@@ -31,6 +31,7 @@ const SingleMovie = () => {
           poster={data.poster}
           overview={data.overview}
           vote={data.vote}
+          type={data.type}
         />
       )}
     </div>
