@@ -7,8 +7,8 @@ import SearchBar from "../components/SearchBar";
 
 const NavBar = () => {
   return (
-    <div className="bg-orange p-4">
-      <div className="container flex justify-between items-center">
+    <div className="bg-orange p-4 sticky top-0 z-50">
+      <div className="container flex justify-between items-center px-4">
         <Link to={"/"}>
           <Brand />
         </Link>
