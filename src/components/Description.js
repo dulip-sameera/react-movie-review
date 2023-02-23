@@ -5,7 +5,7 @@ const Description = ({ poster, overview, vote, type }) => {
   return (
     <div className="mt-4 md:flex md:gap-5">
       <div className="flex justify-center">
-        <img src={poster} alt="" className="max-w-xs" />
+        <img src={poster} alt="movie poster" className="max-w-[10rem]" />
       </div>
       <div className=" mt-4">
         <Title name={"OVERVIEW"} />
