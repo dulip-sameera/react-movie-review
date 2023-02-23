@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import useFetchReview from "../hook/useFetchReview";
 import ReviewItem from "./ReviewItem";
 
-// import ReviewItem from "./ReviewItem";
-
 const Review = ({ movieId }) => {
-  const [reviewData, setReviewData] = useState([
-    {
-      photo: "",
-      name: "",
-      text: "",
-      count: "",
-    },
-  ]);
-  //   console.log(userList);
+  const { data } = useFetchReview(movieId);
 
   return (
     <div>
@@ -23,8 +14,8 @@ const Review = ({ movieId }) => {
           Add Review
         </button>
       </div>
-      {reviewData &&
-        reviewData.map((item, index) => <ReviewItem data={item} key={index} />)}
+      {data &&
+        data.map((item, index) => <ReviewItem data={item} key={index} />)}
     </div>
   );
 };
