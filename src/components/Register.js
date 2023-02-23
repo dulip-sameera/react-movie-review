@@ -53,7 +53,7 @@ const Register = () => {
           className="py-1 px-2 hover:cursor-pointer hover:bg-white hover:text-orange hover:border-white hover:rounded-md transition-all duration-300"
           onClick={signInUser}
         >
-          LogIn
+          Log In
         </button>
       )}
     </div>
