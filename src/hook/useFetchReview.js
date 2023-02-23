@@ -57,6 +57,7 @@ export default function useFetchReview(movieId) {
         let user = users.find(({ id }) => id === review.userId);
 
         return {
+          userId: user.id,
           name: user.name,
           text: review.text,
           count: review.count,
