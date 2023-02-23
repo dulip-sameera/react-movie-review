@@ -17,14 +17,12 @@ const Register = () => {
           login({
             name: currentUser.displayName,
             id: currentUser.uid,
-            photo: currentUser.photoURL,
           })
         );
 
         try {
           setDoc(doc(db, "users", currentUser.uid), {
             name: currentUser.displayName,
-            photo: currentUser.photoURL,
             email: currentUser.email,
           });
         } catch (err) {
