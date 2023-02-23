@@ -5,7 +5,9 @@ const ReviewItem = ({ data }) => {
   return (
     <div className="flex gap-4 mt-3 shadow-lg p-2 rounded-md">
       <div>
-        <img src={data.photo} alt="" className="rounded-full max-w-[60px]" />
+        <div className="rounded-full w-[70px] h-[70px] flex items-center justify-center text-lg font-bold text-white bg-orange">
+          {data.name.trim().replace(/\s+/g, "").substring(0, 2)}
+        </div>
       </div>
 
       <div>
