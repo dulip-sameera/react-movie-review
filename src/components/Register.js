@@ -1,7 +1,8 @@
 import { onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { auth } from "../firebase/firebase.config";
+import { auth, db } from "../firebase/firebase.config";
 import { signInUser } from "../firebase/signInUser";
 import { signOutUser } from "../firebase/signOutUser";
 import { login, logout, userSelector } from "../store/user.slice";
@@ -19,6 +20,16 @@ const Register = () => {
             photo: currentUser.photoURL,
           })
         );
+
+        try {
+          setDoc(doc(db, "users", currentUser.uid), {
+            name: currentUser.displayName,
+            photo: currentUser.photoURL,
+            email: currentUser.email,
+          });
+        } catch (err) {
+          console.log(err);
+        }
       } else {
         dispatch(logout());
       }
