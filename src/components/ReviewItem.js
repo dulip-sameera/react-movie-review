@@ -13,7 +13,7 @@ const ReviewItem = ({ data }) => {
         </div>
       </div>
 
-      <div>
+      <div className="w-full">
         <div className="flex items-center justify-between">
           <h3 className="font-medium">{data.name}</h3>
           {user && user.id === data.userId && (
