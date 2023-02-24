@@ -12,6 +12,7 @@ import {
 import { userReducer } from "./user.slice";
 
 const persistConfig = {
+  // dont change key; it necessary to be root
   key: "root",
   storage,
 };
