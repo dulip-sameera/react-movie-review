@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import fetchReviewData from "../firebase/fetchReviewData";
-import useFetchReview from "../hook/useFetchReview";
 import { userSelector } from "../store/user.slice";
 import ReviewItem from "./ReviewItem";
 
