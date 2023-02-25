@@ -15,7 +15,7 @@ const Review = ({ movieId }) => {
       setData(response);
       setLoading(true);
     });
-  }, []);
+  }, [movieId, user]);
 
   if (loading && data.length > 0) {
     return (
