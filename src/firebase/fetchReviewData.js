@@ -1,11 +1,4 @@
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import extractData from "../utils/extractData";
 import { db } from "./firebase.config";
 
@@ -16,6 +9,7 @@ export default async function fetchReviewData(movieId, currentUser) {
     query(collection(db, "reviews"), where("movieId", "==", movieId))
   );
   const reviews = [];
+
   reviewsSnap.forEach((doc) => {
     reviews.push({
       id: doc.id,
@@ -55,12 +49,13 @@ export default async function fetchReviewData(movieId, currentUser) {
     // console.log(currentUserReview);
     // create a new review object that has the current user's review
     // and add it to review data array
-    reviewData.push({
-      name: currentUser.name,
-      userId: currentUser.id,
-      text: currentUserReview.text,
-      reviewId: currentUserReview.id,
-    });
+    currentUserReview &&
+      reviewData.push({
+        name: currentUser.name,
+        userId: currentUser.id,
+        text: currentUserReview.text,
+        reviewId: currentUserReview.id,
+      });
   }
   //   console.log(reviewData);
   reviews.forEach((review) => {
