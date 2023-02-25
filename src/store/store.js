@@ -10,6 +10,7 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import { userReducer } from "./user.slice";
+import { showReducer } from "./show.slice";
 
 const persistConfig = {
   // dont change key; it necessary to be root
@@ -19,6 +20,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  show: showReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
