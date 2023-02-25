@@ -7,6 +7,7 @@ import ReviewItem from "./ReviewItem";
 const Review = ({ movieId }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  // this state used to reload the review component after a  deletion of a review ocurred
   const [reload, setReload] = useState(false);
 
   const user = useSelector(userSelector);
