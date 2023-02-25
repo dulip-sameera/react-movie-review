@@ -7,6 +7,7 @@ import ReviewItem from "./ReviewItem";
 const Review = ({ movieId }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const user = useSelector(userSelector);
 
@@ -15,7 +16,7 @@ const Review = ({ movieId }) => {
       setData(response);
       setLoading(true);
     });
-  }, [movieId, user]);
+  }, [movieId, user, reload]);
 
   if (loading && data.length > 0) {
     return (
@@ -28,7 +29,13 @@ const Review = ({ movieId }) => {
           </button>
         </div>
         {data &&
-          data.map((item, index) => <ReviewItem data={item} key={index} />)}
+          data.map((item, index) => (
+            <ReviewItem
+              data={item}
+              reloadReview={{ reload, setReload }}
+              key={index}
+            />
+          ))}
       </div>
     );
   } else if (loading) {
