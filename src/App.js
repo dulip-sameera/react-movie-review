@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./layout/NavBar";
 import AddReview from "./pages/AddReview";
+import EditReview from "./pages/EditReview";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
 import SingleMovie from "./pages/SingleMovie";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/movies/:sid" element={<SingleMovie />} />
           <Route path="/tvseries/:sid" element={<SingleTVSeries />} />
           <Route path="/addreview/:sid" element={<AddReview />} />
+          <Route path="/editreveiw/:sid" element={<EditReview />} />
         </Routes>
       </div>
     </BrowserRouter>

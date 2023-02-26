@@ -1,6 +1,7 @@
 import React from "react";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import deleteDocById from "../firebase/deleteDocById";
 import { userSelector } from "../store/user.slice";
 import ShowStarRate from "./ShowStarRate";
@@ -30,7 +31,9 @@ const ReviewItem = ({ data, reloadReview }) => {
                 className="hover:text-lightOrange text-xl"
                 onClick={handleDeleteClick}
               />
-              <MdEdit className="hover:text-lightOrange text-xl" />
+              <Link to={`/editreveiw/${data.movieId}`}>
+                <MdEdit className="hover:text-lightOrange text-xl" />
+              </Link>
             </div>
           )}
         </div>
