@@ -3,6 +3,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import { useSelector } from "react-redux";
 import deleteDocById from "../firebase/deleteDocById";
 import { userSelector } from "../store/user.slice";
+import ShowStarRate from "./ShowStarRate";
 
 const ReviewItem = ({ data, reloadReview }) => {
   const user = useSelector(userSelector);
@@ -21,19 +22,20 @@ const ReviewItem = ({ data, reloadReview }) => {
       </div>
 
       <div className="w-full">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:gap-0 items-center justify-between">
           <h3 className="font-medium">{data.name}</h3>
           {user && user.id === data.userId && (
             <div className="flex items-center gap-6">
               <MdDelete
-                className="hover:text-lightOrange"
+                className="hover:text-lightOrange text-xl"
                 onClick={handleDeleteClick}
               />
-              <MdEdit className="hover:text-lightOrange" />
+              <MdEdit className="hover:text-lightOrange text-xl" />
             </div>
           )}
         </div>
-        <p className="mt-2 text-justify">{data.text}</p>
+        <p className="mt-2 text-center sm:text-justify ">{data.text}</p>
+        <ShowStarRate rate={data.rate} />
       </div>
     </div>
   );
