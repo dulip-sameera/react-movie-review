@@ -10,6 +10,25 @@
   margin-top: 2rem;
 }
 
+/* star rating styles */
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+}
+
+.star {
+  font-size: 2rem;
+}
+
+.on {
+  color: #f94a29;
+}
+
+.off {
+  color: #c08b7f;
+}
+
 @media (min-width: 576px) {
   .card-list {
     grid-template-columns: repeat(2, 1fr);
