@@ -2,11 +2,15 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import extractData from "../utils/extractData";
 import { db } from "./firebase.config";
 
-export default async function fetchReviewData(movieId, currentUser) {
+export default async function fetchReviewData(movieId, showType, currentUser) {
   //   console.log(movieId, currentUser);
   // fetch reviews that specific to a movie
   const reviewsSnap = await getDocs(
-    query(collection(db, "reviews"), where("movieId", "==", movieId))
+    query(
+      collection(db, "reviews"),
+      where("showType", "==", showType),
+      where("movieId", "==", movieId)
+    )
   );
   const reviews = [];
 
