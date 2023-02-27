@@ -14,11 +14,11 @@ const Review = ({ movieId, type }) => {
   const user = useSelector(userSelector);
 
   useEffect(() => {
-    fetchReviewData(movieId, user).then((response) => {
+    fetchReviewData(movieId, type, user).then((response) => {
       setData(response);
       setLoading(true);
     });
-  }, [movieId, user, reload]);
+  }, [movieId, user, reload, type]);
 
   if (loading && data.length > 0) {
     return (
