@@ -17,13 +17,14 @@ import { useFetch } from "../hook/useFetch";
 import { userSelector } from "../store/user.slice";
 import { posterBase342URL, youtubeBaseURL } from "../utils/Data";
 import extractMovieData from "../utils/extractMovieData";
+import Loading from "../utils/Loading";
 
 const AddReview = () => {
-  const { sid } = useParams();
+  const { sid, stype } = useParams();
   const [existsUserReview, setExistsUserReview] = useState(false);
   const [loadingFinished, setLoadingFinished] = useState(false);
 
-  const url = `https://api.themoviedb.org/3/movie/${sid}?language=en-US&api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
+  const url = `https://api.themoviedb.org/3/${stype}/${sid}?language=en-US&api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
 
   const movie = useFetch(url);
 
@@ -48,6 +49,7 @@ const AddReview = () => {
       text: reviewText.trim(),
       createdTime: serverTimestamp(),
       rate: rate,
+      showType: stype,
     });
 
     navigate(`/movies/${sid}`);
@@ -60,14 +62,22 @@ const AddReview = () => {
   useEffect(() => {
     user &&
       fetchDocsConditionally(
-        query(collection(db, "reviews"), where("userId", "==", user.id))
+        query(
+          collection(db, "reviews"),
+          where("userId", "==", user.id),
+          where("movieId", "==", sid)
+        )
       ).then((response) => {
         setExistsUserReview(response.length === 0 ? false : true);
         setLoadingFinished(true);
       });
-  }, [user]);
+  }, [sid, user]);
 
-  if (user && loadingFinished) {
+  if (!loadingFinished) {
+    return <Loading />;
+  }
+
+  if (user) {
     if (existsUserReview) navigate(`/movies/${sid}`);
     return (
       <div className="container min-h-[500px]">
