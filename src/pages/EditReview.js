@@ -10,6 +10,7 @@ import useFetchDocument from "../hook/useFetchDocument";
 import { userSelector } from "../store/user.slice";
 import { posterBase342URL, youtubeBaseURL } from "../utils/Data";
 import extractMovieData from "../utils/extractMovieData";
+import extractTVData from "../utils/extractTVData";
 import Loading from "../utils/Loading";
 
 const EditReview = () => {
@@ -30,15 +31,23 @@ const EditReview = () => {
   const url = `https://api.themoviedb.org/3/${stype}/${sid}?language=en-US&api_key=${process.env.REACT_APP_TMDB_API_KEY}&append_to_response=videos`;
   const show = useFetch(url);
   let showData;
-  if (!show.loading)
-    showData = extractMovieData(show, posterBase342URL, youtubeBaseURL);
+  let navShowType;
+  if (!show.loading) {
+    if (stype === "movie") {
+      showData = extractMovieData(show, posterBase342URL, youtubeBaseURL);
+      navShowType = "movies";
+    } else if (stype === "tv") {
+      showData = extractTVData(show, posterBase342URL, youtubeBaseURL);
+      navShowType = "tvseries";
+    }
+  }
 
   const handleGoBack = () => {
     navigate(-1);
   };
 
   const handleCancelEdit = () => {
-    navigate(`/movies/${sid}`);
+    navigate(`/${navShowType}/${sid}`);
   };
 
   const handleUpdate = () => {
@@ -56,7 +65,7 @@ const EditReview = () => {
     };
 
     updateDocById("reviews", rid, updatedReview);
-    navigate(`/movies/${sid}`);
+    navigate(`/${navShowType}/${sid}`);
   };
 
   if (loading || show.loading) {

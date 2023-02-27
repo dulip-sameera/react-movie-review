@@ -17,6 +17,7 @@ import { useFetch } from "../hook/useFetch";
 import { userSelector } from "../store/user.slice";
 import { posterBase342URL, youtubeBaseURL } from "../utils/Data";
 import extractMovieData from "../utils/extractMovieData";
+import extractTVData from "../utils/extractTVData";
 import Loading from "../utils/Loading";
 
 const AddReview = () => {
@@ -28,7 +29,15 @@ const AddReview = () => {
 
   const movie = useFetch(url);
 
-  let data = extractMovieData(movie, posterBase342URL, youtubeBaseURL);
+  let data;
+  let navShowType;
+  if (stype === "movie") {
+    data = extractMovieData(movie, posterBase342URL, youtubeBaseURL);
+    navShowType = "movies";
+  } else if (stype === "tv") {
+    data = extractTVData(movie, posterBase342URL, youtubeBaseURL);
+    navShowType = "tvseries";
+  }
 
   const user = useSelector(userSelector);
 
@@ -52,11 +61,11 @@ const AddReview = () => {
       showType: stype,
     });
 
-    navigate(`/movies/${sid}`);
+    navigate(`/${navShowType}/${sid}`);
   };
 
   const handleCancelReview = () => {
-    navigate(`/movies/${sid}`);
+    navigate(`/${navShowType}/${sid}`);
   };
 
   useEffect(() => {
@@ -72,6 +81,19 @@ const AddReview = () => {
         setLoadingFinished(true);
       });
   }, [sid, user]);
+
+  if (!user) {
+    return (
+      <div className="container min-h-[500px] w-full flex justify-center mt-20">
+        <div>
+          <div className="font-bold text-xl text-slate-600 text-center mb-10">
+            Log In to proceed...
+          </div>
+          <GoogleButton onClick={signInUser} />
+        </div>
+      </div>
+    );
+  }
 
   if (!loadingFinished) {
     return <Loading />;
@@ -145,17 +167,6 @@ const AddReview = () => {
               </button>
             </div>
           </div>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="container min-h-[500px] w-full flex justify-center mt-20">
-        <div>
-          <div className="font-bold text-xl text-slate-600 text-center mb-10">
-            Log In to proceed...
-          </div>
-          <GoogleButton onClick={signInUser} />
         </div>
       </div>
     );
