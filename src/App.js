@@ -22,8 +22,8 @@ function App() {
           <Route path="/tvseries" element={<TVSeries />} />
           <Route path="/movies/:sid" element={<SingleMovie />} />
           <Route path="/tvseries/:sid" element={<SingleTVSeries />} />
-          <Route path="/addreview/:sid" element={<AddReview />} />
-          <Route path="/editreveiw/:sid" element={<EditReview />} />
+          <Route path="/addreview/:stype/:sid" element={<AddReview />} />
+          <Route path="/editreveiw/:stype/:rid/:sid" element={<EditReview />} />
         </Routes>
       </div>
     </BrowserRouter>
