@@ -5,7 +5,7 @@ import fetchReviewData from "../firebase/fetchReviewData";
 import { userSelector } from "../store/user.slice";
 import ReviewItem from "./ReviewItem";
 
-const Review = ({ movieId }) => {
+const Review = ({ movieId, type }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   // this state used to reload the review component after a  deletion of a review ocurred
@@ -28,7 +28,7 @@ const Review = ({ movieId }) => {
           <div>Review</div>
           {!("userHasReview" in data[0]) && (
             <Link
-              to={`/addreview/${movieId}`}
+              to={`/addreview/${data[0].showType}/${movieId}`}
               className="bg-orange text-white py-1 px-2 rounded-lg"
             >
               Add Review
@@ -49,7 +49,7 @@ const Review = ({ movieId }) => {
     return (
       <div className="mt-4 flex justify-center">
         <Link
-          to={`/addreview/${movieId}`}
+          to={`/addreview/${type}/${movieId}`}
           className="bg-orange text-white py-2 px-4 text-lg rounded-lg"
         >
           Add Review
