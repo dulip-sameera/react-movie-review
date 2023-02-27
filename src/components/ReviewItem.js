@@ -28,7 +28,7 @@ const ReviewItem = ({ data, reloadReview }) => {
           {user && user.id === data.userId && (
             <div className="flex items-center gap-6">
               <MdDelete
-                className="hover:text-lightOrange text-xl"
+                className="hover:text-lightOrange hover:cursor-pointer text-xl"
                 onClick={handleDeleteClick}
               />
               <Link
