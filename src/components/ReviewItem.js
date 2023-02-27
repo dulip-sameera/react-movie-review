@@ -31,7 +31,9 @@ const ReviewItem = ({ data, reloadReview }) => {
                 className="hover:text-lightOrange text-xl"
                 onClick={handleDeleteClick}
               />
-              <Link to={`/editreveiw/${data.movieId}`}>
+              <Link
+                to={`/editreveiw/${data.showType}/${data.reviewId}/${data.movieId}`}
+              >
                 <MdEdit className="hover:text-lightOrange text-xl" />
               </Link>
             </div>
