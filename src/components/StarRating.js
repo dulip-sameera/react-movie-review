@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 
-const StarRating = ({ rate, setRate }) => {
+const StarRating = ({ rate, setRate, initRate }) => {
   const [hover, setHover] = useState(0);
+  const [initializedRate, setInitializedRate] = useState(initRate);
+
+  useEffect(() => {
+    if (initRate) setRate(initRate);
+  }, []);
 
   return (
     <div className="star-rating">
@@ -13,10 +18,15 @@ const StarRating = ({ rate, setRate }) => {
             <button
               type="button"
               key={index}
-              className={index <= (hover || rate) ? "on" : "off"}
-              onClick={() => setRate(index)}
+              className={
+                index <= (hover || initializedRate || rate) ? "on" : "off"
+              }
+              onClick={() => {
+                setRate(index);
+                setInitializedRate(null);
+              }}
               onMouseEnter={() => setHover(index)}
-              onMouseLeave={() => setHover(rate)}
+              onMouseLeave={() => setHover(initializedRate || rate)}
               onDoubleClick={() => {
                 setRate(0);
                 setHover(0);
