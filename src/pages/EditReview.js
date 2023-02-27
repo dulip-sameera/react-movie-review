@@ -37,8 +37,6 @@ const EditReview = () => {
     navigate(-1);
   };
 
-  const reviewTextRef = useRef(true);
-
   const handleCancelEdit = () => {
     navigate(`/movies/${sid}`);
   };
