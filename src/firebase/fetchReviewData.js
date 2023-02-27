@@ -57,6 +57,7 @@ export default async function fetchReviewData(movieId, currentUser) {
         reviewId: currentUserReview.id,
         rate: currentUserReview.rate,
         movieId: currentUserReview.movieId,
+        showType: currentUserReview.showType,
         userHasReview: true,
       });
   }
@@ -73,6 +74,7 @@ export default async function fetchReviewData(movieId, currentUser) {
       reviewId: review.id,
       rate: review.rate,
       movieId: review.movieId,
+      showType: review.showType,
     });
   });
   //   console.log(reviewData);
