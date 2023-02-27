@@ -35,7 +35,7 @@ const SingleMovie = () => {
           type={data.type}
         />
       )}
-      <Review movieId={sid} type={data.type} />
+      <Review movieId={sid} type={"movie"} />
     </div>
   );
 };

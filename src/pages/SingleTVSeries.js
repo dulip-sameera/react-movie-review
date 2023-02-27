@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Description from "../components/Description";
 import NoTrailer from "../components/NoTrailer";
 import Player from "../components/Player";
+import Review from "../components/Review";
 import Title from "../components/Title";
 import { useFetch } from "../hook/useFetch";
 import { posterBase342URL, youtubeBaseURL } from "../utils/Data";
@@ -34,6 +35,8 @@ const SingleTVSeries = () => {
           type={data.type}
         />
       )}
+
+      <Review movieId={sid} type={"tv"} />
     </div>
   );
 };
