@@ -40,7 +40,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hidden sm:flex gap-4 text-white text-lg">
+    <div className="hidden md:flex gap-4 text-white text-lg">
       {user ? (
         <button
           className="py-1 px-2 bg-white text-orange hover:cursor-pointer hover:bg-white hover:text-lightOrange hover:border-white rounded-md transition-all duration-300"
