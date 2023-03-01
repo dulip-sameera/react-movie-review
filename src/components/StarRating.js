@@ -7,7 +7,7 @@ const StarRating = ({ rate, setRate, initRate }) => {
 
   useEffect(() => {
     if (initRate) setRate(initRate);
-  }, []);
+  }, [initRate, setRate]);
 
   return (
     <div className="star-rating">

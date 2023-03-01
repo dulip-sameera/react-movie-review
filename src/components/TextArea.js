@@ -10,7 +10,7 @@ const TextArea = ({
 
   useEffect(() => {
     setReviewText(initReviewText);
-  }, []);
+  }, [initReviewText, setReviewText]);
   return (
     <div className="flex flex-col mt-1">
       <label htmlFor="review-text" className="font-bold text-slate-600 mb-1">
