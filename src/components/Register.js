@@ -40,17 +40,17 @@ const Register = () => {
   };
 
   return (
-    <div className="hidden sm:flex gap-4 text-white text-lg">
+    <div className="flex text-white mt-4 text-xs sm:text-lg sm:mt-0">
       {user ? (
         <button
-          className="py-1 px-2 bg-white text-orange hover:cursor-pointer hover:bg-white hover:text-lightOrange hover:border-white rounded-md transition-all duration-300"
+          className="py-1 px-2 bg-white text-orange sm:hover:cursor-pointer sm:hover:bg-white sm:hover:text-lightOrange sm:hover:border-white rounded-md transition-all duration-300"
           onClick={handleLogOut}
         >
           {user.name}
         </button>
       ) : (
         <button
-          className="py-1 px-2 hover:cursor-pointer hover:bg-white hover:text-orange hover:border-white hover:rounded-md transition-all duration-300"
+          className="py-1 px-2 sm:hover:cursor-pointer sm:hover:bg-white sm:hover:text-orange sm:hover:border-white sm:hover:rounded-md transition-all sm:duration-300 active:bg-white active:text-orange active:border-white active:rounded-md duration-100"
           onClick={signInUser}
         >
           Log In
