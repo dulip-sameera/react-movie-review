@@ -4,8 +4,8 @@ import Title from "./Title";
 const Description = ({ poster, overview, vote, type }) => {
   return (
     <div className="mt-4 md:flex md:gap-5">
-      <div className="flex justify-center">
-        <img src={poster} alt="movie poster" className="max-w-[10rem]" />
+      <div className="flex justify-center w-full md:w-fit">
+        <img src={poster} alt="movie poster" className="md:max-w-[10rem]" />
       </div>
       <div className=" mt-4">
         <Title name={"OVERVIEW"} />
