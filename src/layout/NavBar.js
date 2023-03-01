@@ -7,7 +7,7 @@ import Register from "../components/Register";
 const NavBar = () => {
   return (
     <div className="bg-orange p-4 sticky top-0 z-50">
-      <div className="container flex justify-between items-center px-4">
+      <div className="container flex flex-col sm:flex-row justify-center sm:justify-between items-center px-4">
         <Link to={"/"}>
           <Brand />
         </Link>
