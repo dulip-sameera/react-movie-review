@@ -28,8 +28,7 @@ const SearchBar = () => {
       />
       <input
         type="text"
-        className="rounded-2xl bg-darkBrown outline-none border-2 border-white text-white text-sm sm:text-sm px-8 py-0.5 sm:py-1 flex items-center align-middle w-28 md:w-80 placeholder:text-lightGray"
-        // value={searchValue}
+        className="rounded-2xl bg-darkBrown outline-none border-2 border-white text-white text-sm sm:text-sm px-8 py-0.5 sm:py-1 flex items-center align-middle w-28 sm:w-40 md:w-80 placeholder:text-lightGray"
         value={searchValue}
         onChange={handleChange}
         placeholder="Search..."

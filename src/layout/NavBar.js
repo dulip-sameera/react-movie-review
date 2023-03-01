@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Brand from "../components/Brand";
 import Navigation from "../components/Navigation";
 import Register from "../components/Register";
-import SearchBar from "../components/SearchBar";
 
 const NavBar = () => {
   return (
@@ -12,7 +11,6 @@ const NavBar = () => {
         <Link to={"/"}>
           <Brand />
         </Link>
-        <SearchBar />
         <Navigation />
         <Register />
       </div>
